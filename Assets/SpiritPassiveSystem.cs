@@ -7,6 +7,12 @@ public class SpiritPassiveSystem : MonoBehaviour
     [SerializeField] bool phoenixPassive;
     [SerializeField] bool carbunclePassive;
 
+    public PlayerMovement playerMovement;
+
+    void Start()
+    {
+            
+    }
     private void Update()
     {
         CheckPassives();
@@ -14,11 +20,7 @@ public class SpiritPassiveSystem : MonoBehaviour
 
     void CheckPassives()
     {
-        if (phoenixPassive == true)
-        {
-            PhoenixPassive();
-        }
-
+        PhoenixPassive();
         if (carbunclePassive == true)
         {
             CarbunclePassive();
@@ -27,7 +29,14 @@ public class SpiritPassiveSystem : MonoBehaviour
 
     void PhoenixPassive()
     {
-        Debug.Log("Phoenix Passive Activated");
+        if (phoenixPassive == true)
+        {
+            playerMovement.moveSpeed = 10;
+        }
+        else
+        {
+            playerMovement.moveSpeed = 5;
+        }
     }
 
     void CarbunclePassive()
