@@ -457,10 +457,10 @@ InputManager:
     m_Name: Inventory
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: e
+    negativeButton: 
     positiveButton: e
-    altNegativeButton: e
-    altPositiveButton: e
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -470,11 +470,11 @@ InputManager:
     axis: 6
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Debug Horizontal
+    m_Name: Interact
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: left
-    positiveButton: right
+    negativeButton: 
+    positiveButton: f
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000

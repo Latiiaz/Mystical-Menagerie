@@ -1,18 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class SpiritAltar : MonoBehaviour
+public class SpiritAltar : MonoBehaviour/*, IInteractable*/
 {
-    // Start is called before the first frame update
-    void Start()
+    //public void Interact()
+    //{
+
+    //}
+    public GameObject altarSelectionMenu;
+
+    private void Start()
     {
-        
+        if (altarSelectionMenu!= null)
+        {
+            altarSelectionMenu.SetActive(false);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (Input.GetKeyUp(KeyCode.F))
+        {
+            bool isActive = altarSelectionMenu.activeSelf;
+
+            altarSelectionMenu.SetActive(!isActive);
+
+        }
     }
 }
