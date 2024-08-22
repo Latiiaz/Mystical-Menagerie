@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 public class SpiritStatsSystem : MonoBehaviour
 {
     [SerializeField] public Image affectionBarFill;
@@ -11,6 +12,9 @@ public class SpiritStatsSystem : MonoBehaviour
     [SerializeField] public Image hungerBarFill;
     [SerializeField] public float maxHunger;
     [SerializeField] public float currentHunger;
+
+    [SerializeField] public TextMeshProUGUI friendshipText;
+    [SerializeField] public float friendshipLevel;
 
     private int affinityLossOverTime = 5;
     private int hungerLossOverTime = 10;
@@ -101,5 +105,10 @@ public class SpiritStatsSystem : MonoBehaviour
         {
             currentHunger = maxHunger;
         }
+    }
+
+    public void DisplayHappiness()
+    {
+        friendshipText.text = string.Format("{0}/5", friendshipLevel);
     }
 }

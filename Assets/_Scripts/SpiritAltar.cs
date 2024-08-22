@@ -13,6 +13,7 @@ public class SpiritAltar : NonNPCInteractable
     public bool menuActivated;
     int timesfed = 0;
 
+    public SpiritStatsSystem spiritstatssystem;
 
     private void Start()
     {
@@ -57,6 +58,7 @@ public class SpiritAltar : NonNPCInteractable
         {
             Debug.Log("Thank you that was really refreshing");
             timesfed = 0;
+            spiritstatssystem.friendshipLevel++;
         }
     }
 

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5810925aa5302e4cb1253553ae0094d, type: 3}
   m_Name: Phoenix NPC Text
   m_EditorClassIdentifier: 
-  speakerName: Phoenix
+  speakerName: ???
   paragraphs:
-  - Test Phoenix
-  - Test Phoenix Typing
+  - "If you keep following this path, you'll find a spirit altar. \t"
+  - Find 2 berries and interact with the altar.
