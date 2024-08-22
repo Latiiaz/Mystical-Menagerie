@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public abstract class NPC : MonoBehaviour, IInteractable
+
+// Eventually will replace "NPC.cs" if too many uses NPC. Replaced
+
+public abstract class NonNPCInteractable : MonoBehaviour, IInteractable
 {
     private Transform _playerTransform;
 
@@ -16,9 +19,10 @@ public abstract class NPC : MonoBehaviour, IInteractable
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && IsWithinInteractDistance()) // F Interact Key
+        if (Input.GetKeyDown(KeyCode.E)) // E Interact Key..  Note: NPC is F, Objects are E, Distance Check not working
         {
-            //interact with this NPC
+            //interact with this NonNPC
+            
             Interact();
         }
     }

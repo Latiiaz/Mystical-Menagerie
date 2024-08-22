@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpiritPassiveSystem : MonoBehaviour
 {
     [SerializeField] bool phoenixPassive;
-    [SerializeField] bool carbunclePassive;
+    //[SerializeField] bool carbunclePassive;
 
     public PlayerMovement playerMovement;
 
@@ -13,7 +13,7 @@ public class SpiritPassiveSystem : MonoBehaviour
     {
             
     }
-    private void Update()
+    void Update()
     {
         CheckPassives();
     }
@@ -21,10 +21,6 @@ public class SpiritPassiveSystem : MonoBehaviour
     void CheckPassives()
     {
         PhoenixPassive();
-        if (carbunclePassive == true)
-        {
-            CarbunclePassive();
-        }
     }
 
     void PhoenixPassive()
@@ -37,10 +33,5 @@ public class SpiritPassiveSystem : MonoBehaviour
         {
             playerMovement.moveSpeed = 5;
         }
-    }
-
-    void CarbunclePassive()
-    {
-        Debug.Log("Carbuncle Passive Activated");
     }
 }

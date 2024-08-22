@@ -19,22 +19,17 @@ public class InventorySystem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && menuActivated)
         {
             Debug.Log("Wee Testing E");
-            
+            Time.timeScale = 1;
             InventoryMenu.SetActive(false);
             menuActivated = false;
         }
 
-        else if (Input.GetButtonDown("Inventory") && !menuActivated)
+        else if (Input.GetKeyDown(KeyCode.E) && !menuActivated)
         {
+            Debug.Log("Wee Testing E inv on");
             Time.timeScale = 0;
             InventoryMenu.SetActive(true);
             menuActivated = true;
-        }
-
-
-        if (Input.GetButtonDown("Inventory"))
-        {
-            Debug.Log("dwa");
         }
     }
 }

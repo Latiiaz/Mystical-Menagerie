@@ -2,22 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PhoenixNPC : NPC
+public class PhoenixNPC : NPC, ITalkable
 {
+    [SerializeField] private DialogueText dialogueText;
+    [SerializeField] private DialogueSystem dialogueSystem;
+
     public override void Interact()
     {
-        Debug.Log("Interact works");
+        Talk(dialogueText);
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void Talk(DialogueText dialogueText)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        dialogueSystem.DisplayNextParagraph(dialogueText);
     }
 }

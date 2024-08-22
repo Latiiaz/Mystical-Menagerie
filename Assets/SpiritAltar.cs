@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class SpiritAltar : MonoBehaviour/*, IInteractable*/
-{
-    //public void Interact()
-    //{
 
-    //}
+// Maybe displays spirit icons instead of full stat page. 
+// Currently displaying full spirit stat menu
+public class SpiritAltar : NonNPCInteractable
+{
+    // Spirit Altar Object 
     public GameObject altarSelectionMenu;
+    public bool menuActivated;
+    int timesfed = 0;
+
 
     private void Start()
     {
@@ -18,15 +21,43 @@ public class SpiritAltar : MonoBehaviour/*, IInteractable*/
             altarSelectionMenu.SetActive(false);
         }
     }
-
-    private void Update()
+    public override void Interact()
     {
-        if (Input.GetKeyUp(KeyCode.F))
+        SpiritMenuUI();
+        
+    }
+    public void SpiritMenuUI()
+    {
+        if (menuActivated)
         {
-            bool isActive = altarSelectionMenu.activeSelf;
+            Debug.Log("Wee Testing E");
+            Time.timeScale = 1;
+            altarSelectionMenu.SetActive(false);
+            menuActivated = false;
+        }
 
-            altarSelectionMenu.SetActive(!isActive);
-
+        else if (!menuActivated)
+        {
+            Debug.Log("Wee Testing E inv on");
+            Time.timeScale = 0;
+            altarSelectionMenu.SetActive(true);
+            menuActivated = true;
         }
     }
+    public void FeedButton()
+    {
+
+        timesfed++;
+
+        if (timesfed == 1)
+        {
+            Debug.Log("One.. More.. Please...");
+        }
+        if (timesfed == 2)
+        {
+            Debug.Log("Thank you that was really refreshing");
+            timesfed = 0;
+        }
+    }
+
 }

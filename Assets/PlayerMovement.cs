@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         ProcessInputs();
+        
     }
     void FixedUpdate()
     {
