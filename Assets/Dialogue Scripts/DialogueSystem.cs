@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 
 //CREDITS: https://www.youtube.com/watch?v=jTPOCglHejE
+//Add number of paragraphs left
 public class DialogueSystem : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI NPCNameText;

@@ -9,8 +9,10 @@ using UnityEngine.UI;
 public class CreatureStats : MonoBehaviour
 {
     [SerializeField] public Image relationshipBarFill;
+    [SerializeField] public int relationshipLevel = 1;
     [SerializeField] public float currentCreatureRelationship;
-    [SerializeField] public float maxCreatureRelationship;
+    [SerializeField] public float creatureRelationshipToLevelUp;
+    [SerializeField] public float levelUpMultiplier = 3f;
 
     [SerializeField] TextMeshProUGUI habitat; //Habitat, TimeAwake, Type of passive buff can be combined into txt file
     [SerializeField] TextMeshProUGUI timeAwake;
@@ -54,7 +56,12 @@ public class CreatureStats : MonoBehaviour
 
     }
 
-    public virtual void ReceiveOffering(float amount)
+    public float CatMath() //Name change when more brains
+    {
+        return (playerInventory.collectedCatsCount/10);
+    }
+
+    public void ReceiveOffering(float amount)
     {
         if (playerInventory.wildBerryCount <= 0)
         {
@@ -62,21 +69,36 @@ public class CreatureStats : MonoBehaviour
         }
         else
         {
-            currentCreatureRelationship += amount;
-            if (currentCreatureRelationship > maxCreatureRelationship)
+            playerInventory.wildBerryCount--;
+            currentCreatureRelationship += amount*(1+CatMath());
+            Debug.Log(currentCreatureRelationship);
+            if (currentCreatureRelationship > creatureRelationshipToLevelUp)
             {
-                currentCreatureRelationship = maxCreatureRelationship;
-                Debug.Log("Maximum capacity reached");
+                RelationshipLevelUp();
+                Debug.Log("Level Up!");
             }
             UpdateRelationshipBar();
         }
         
     }
 
+    public void RelationshipLevelUp()
+    {
+        relationshipLevel++;
+        currentCreatureRelationship -= creatureRelationshipToLevelUp;
+        creatureRelationshipToLevelUp = XPNeeded(relationshipLevel);
+    }
+
+    public float XPNeeded(int relationshipLevel)
+    {
+        return (creatureRelationshipToLevelUp * levelUpMultiplier);
+    }
+
+
     public void UpdateRelationshipBar()
     {
-        float newRS = (currentCreatureRelationship - 100) * -1; // Change colors when higher overall %
-        float fillAmount = newRS / maxCreatureRelationship;
+        float newRS = (currentCreatureRelationship - creatureRelationshipToLevelUp) * -1; // Change colors when higher overall %
+        float fillAmount = newRS / creatureRelationshipToLevelUp;
         relationshipBarFill.fillAmount = fillAmount;
     }
 
