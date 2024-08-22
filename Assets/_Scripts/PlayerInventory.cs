@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // Change to nodes instead of walk over
 
-    [SerializeField] public int wildBerryCount;
+    [SerializeField] public int wildBerryCount; 
+    [SerializeField] public int shinyMineralCount;
 
     void Start()
     {

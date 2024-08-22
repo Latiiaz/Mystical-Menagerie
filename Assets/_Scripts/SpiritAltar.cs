@@ -14,7 +14,7 @@ public class SpiritAltar : NonNPCInteractable
     int timesfed = 0;
 
     public SpiritStatsSystem spiritstatssystem;
-
+    public CreatureStats creatureStats;
     private void Start()
     {
         if (altarSelectionMenu!= null)
@@ -31,16 +31,16 @@ public class SpiritAltar : NonNPCInteractable
     {
         if (menuActivated)
         {
-            Debug.Log("Wee Testing E");
-            Time.timeScale = 1;
+            //Debug.Log("Wee Testing E");
+            //Time.timeScale = 1;
             altarSelectionMenu.SetActive(false);
             menuActivated = false;
         }
 
         else if (!menuActivated)
         {
-            Debug.Log("Wee Testing E inv on");
-            Time.timeScale = 0;
+            //Debug.Log("Wee Testing E inv on");
+            //Time.timeScale = 0;
             altarSelectionMenu.SetActive(true);
             menuActivated = true;
         }
@@ -49,17 +49,17 @@ public class SpiritAltar : NonNPCInteractable
     {
 
         timesfed++;
+        creatureStats.ReceiveOffering(15);
 
-        if (timesfed == 1)
-        {
-            Debug.Log("One.. More.. Please...");
-        }
-        if (timesfed == 2)
-        {
-            Debug.Log("Thank you that was really refreshing");
-            timesfed = 0;
-            spiritstatssystem.friendshipLevel++;
+        //if (timesfed == 1)
+        //{
+        //    Debug.Log("One.. More.. Please...");
+        //}
+        //if (timesfed == 2)
+        //{
+        //    Debug.Log("Thank you that was really refreshing");
+        //    timesfed = 0;
+        //    spiritstatssystem.friendshipLevel++;
         }
     }
 
-}

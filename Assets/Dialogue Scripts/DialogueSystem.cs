@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+//CREDITS: https://www.youtube.com/watch?v=jTPOCglHejE
 public class DialogueSystem : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI NPCNameText;

@@ -44,4 +44,10 @@ public class SpiritSystem : MonoBehaviour //Script to handle Spirit Clicking/UI/
     {
 
     }
+
+    IEnumerator MovementCooldown()
+    {
+            yield return new WaitForSeconds(0.5f);
+        
+    }
 }

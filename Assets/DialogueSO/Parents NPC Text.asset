@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5810925aa5302e4cb1253553ae0094d, type: 3}
+  m_Name: Parents NPC Text
+  m_EditorClassIdentifier: 
+  speakerName: Parents
+  paragraphs:
+  - Hiya kid, could you collect some berries across the river?
+  - Don't come home too late!

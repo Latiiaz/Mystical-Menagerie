@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Rendering;
 
-
+// Credits : https://www.youtube.com/watch?v=ihurRMKz2es
 public class DayNightSystem : MonoBehaviour
 {
     public TextMeshProUGUI displayTime;

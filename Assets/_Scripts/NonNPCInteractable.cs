@@ -19,7 +19,7 @@ public abstract class NonNPCInteractable : MonoBehaviour, IInteractable
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E)) // E Interact Key..  Note: NPC is F, Objects are E, Distance Check not working
+        if (Input.GetKeyDown(KeyCode.E))// E Interact Key..  Note: NPC is F, Objects are E, Distance Check not working
         {
             //interact with this NonNPC
             
@@ -30,7 +30,7 @@ public abstract class NonNPCInteractable : MonoBehaviour, IInteractable
     public abstract void Interact();
 
 
-    private bool IsWithinInteractDistance()
+    private bool WithinInteractDistance()
     {
         if (Vector2.Distance(_playerTransform.position, transform.position) < INTERACT_DISTANCE)
         {
