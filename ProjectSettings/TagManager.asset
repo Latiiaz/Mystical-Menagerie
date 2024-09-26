@@ -7,6 +7,7 @@ TagManager:
   - Altar
   - Foragable
   - Cat
+  - GridTile
   layers:
   - Default
   - TransparentFX
@@ -43,4 +44,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Grid
+    uniqueID: 1259075525
+    locked: 0
+  - name: Player
+    uniqueID: 2054668905
     locked: 0

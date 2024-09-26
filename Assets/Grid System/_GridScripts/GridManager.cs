@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.Tilemaps;
 
 public class GridManager : MonoBehaviour
@@ -10,6 +11,7 @@ public class GridManager : MonoBehaviour
     [SerializeField] private int _height;
 
     [SerializeField] private Tile _tilePrefab;
+
 
 
     // Camera Centering
@@ -27,7 +29,7 @@ public class GridManager : MonoBehaviour
             for (int y = 0; y < _height; y++)
             {
                 var spawnedTile = Instantiate(_tilePrefab, new Vector3(x, y), Quaternion.identity);
-                spawnedTile.name = $"Tile {x} {y}";
+                spawnedTile.name = $"Tile {x}, {y}";
             }
         }
     }
@@ -36,4 +38,6 @@ public class GridManager : MonoBehaviour
     {
         _cam.transform.position = new Vector3((_width / 2), _height / 2, -10);
     }
+
+   
 }
