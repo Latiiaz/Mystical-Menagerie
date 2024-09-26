@@ -6,41 +6,57 @@ using static UnityEditor.PlayerSettings;
 public class GridMovementSystem : MonoBehaviour
 {
 
-    public Vector3 playerPos;
+    private Vector3 _playerPos;
     
     public float speed = 2.0f;
+
+
 
     [SerializeField] private GridManager _gridManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerPos = transform.position;
+        _playerPos = transform.position;
         
     }
     void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.W) && transform.position == playerPos)
+        if (Input.GetKey(KeyCode.W) && transform.position == _playerPos)
         {
-            playerPos += Vector3.up;
+            _playerPos += Vector3.up;
             //Facing Up
         }
-        if (Input.GetKey(KeyCode.S) && transform.position == playerPos)
+        if (Input.GetKey(KeyCode.S) && transform.position == _playerPos)
         {
-            playerPos += Vector3.down;
+            _playerPos += Vector3.down;
             //Facing Down
         }
-        if (Input.GetKey(KeyCode.A) && transform.position == playerPos)
+        if (Input.GetKey(KeyCode.A) && transform.position == _playerPos)
         {
-            playerPos += Vector3.left;
+            _playerPos += Vector3.left;
             //Facing Left
         }
-        if (Input.GetKey(KeyCode.D) && transform.position == playerPos)
+        if (Input.GetKey(KeyCode.D) && transform.position == _playerPos)
         {
-            playerPos += Vector3.right;
+            _playerPos += Vector3.right;
             //Facing Right
         }
         
-        transform.position = Vector3.MoveTowards(transform.position, playerPos, Time.deltaTime * speed); 
+        transform.position = Vector3.MoveTowards(transform.position, _playerPos, Time.deltaTime * speed); 
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("GridTile"))
+        {
+            Debug.Log("d");
+        }
+    }
+
+
+
+    //Use dictionary to store all tile location and possible threats
+    //Update when tile has interactions
+    //Log all moves in console log 
 }

@@ -11,6 +11,7 @@ public class GridManager : MonoBehaviour
     [SerializeField] private int _height;
 
     [SerializeField] private Tile _tilePrefab;
+    [SerializeField] private Tile _mapBorderTilePrefab;
 
 
 
