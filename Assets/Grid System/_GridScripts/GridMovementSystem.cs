@@ -10,15 +10,19 @@ public class GridMovementSystem : MonoBehaviour
     
     public float speed = 2.0f;
 
+    [SerializeField] public GameObject spawnPoint;
+ 
 
-
-    [SerializeField] private GridManager _gridManager;
+    //[SerializeField] private GridManager _gridManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        PlayerSpawnPointSetter();
         _playerPos = transform.position;
         
+
+
     }
     void FixedUpdate()
     {
@@ -52,6 +56,12 @@ public class GridMovementSystem : MonoBehaviour
         {
             Debug.Log("d");
         }
+    }
+
+    void PlayerSpawnPointSetter()
+    {
+        Vector3 spawnPosition = spawnPoint.transform.position;
+        transform.position = spawnPosition;
     }
 
 
