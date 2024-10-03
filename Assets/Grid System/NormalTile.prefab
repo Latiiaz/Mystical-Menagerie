@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4818221546809917377}
   - component: {fileID: 8027449636957855885}
   m_Layer: 0
-  m_Name: Highlight(Hover)
+  m_Name: Highlight(Click)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -184,8 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 709934a72e448dd4b9944e0a07c2c72d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _highlightHover: {fileID: 4155295837868922606}
-  _highlightPlayer: {fileID: 6324696692858360304}
+  _highlightClick: {fileID: 4155295837868922606}
 --- !u!61 &809855380268217972
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -196,7 +195,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

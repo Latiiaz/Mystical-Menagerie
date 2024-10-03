@@ -34,19 +34,22 @@ public class GridManager : MonoBehaviour
             for (int y = 0; y < _height; y++)
             {
                 var spawnedTile = Instantiate(_tilePrefab, new Vector3(x, y), Quaternion.identity);
-                spawnedTile.name = $"Tile {x}, {y}";
+                spawnedTile.name = $"Tile {x}, {y}"; // transform.parent
             }
         }
     }
 
     void GenerateBorder()
     {
-        for (int x = 0-_tileBorder; x < _width+_tileBorder; x++)
+        for (int xb = 0 - _tileBorder; xb < _width + _tileBorder; xb++)
         {
-            for (int y = 0-_tileBorder; y < _height+_tileBorder; y++)
+            for (int yb = 0 - _tileBorder; yb < _height + _tileBorder; yb++)
             {
-                var spawnedTile = Instantiate(_mapBorderTilePrefab, new Vector3(x, y), Quaternion.identity);
-                spawnedTile.name = $"Tile Border {x}, {y}";
+                if (xb == 0 - _tileBorder || xb == _width + _tileBorder || xb == _width|| yb == _height + _tileBorder || xb == _width || yb == _height)
+                {
+                    var spawnedTile = Instantiate(_mapBorderTilePrefab, new Vector3(xb, yb), Quaternion.identity);
+                    spawnedTile.name = $"Tile Border {xb}, {yb}";
+                }
             }
         }
     }

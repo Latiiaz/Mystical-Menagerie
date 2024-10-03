@@ -152,8 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c01cc586ab0f24e4e89f906413222515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _width: 13
-  _height: 13
+  _width: 5
+  _height: 5
   _tilePrefab: {fileID: 5761580093778882973, guid: 4392dcd91e3a2274ea2296022ca6ff44, type: 3}
   _mapBorderTilePrefab: {fileID: 5761580093778882973, guid: 24df73a1ce9fccc40b57106843e744fe, type: 3}
   _cam: {fileID: 1209079296}
@@ -299,7 +299,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -537,7 +537,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -786,7 +786,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  rotateSpeed: 1000
   spawnPoint: {fileID: 1529551878}
   orientationHitBox: {fileID: 312024091}
 --- !u!61 &1448251740

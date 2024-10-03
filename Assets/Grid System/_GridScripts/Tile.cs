@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    //[SerializeField] GameObject _highlightHover;
+    [SerializeField] GameObject _highlightClick;
     //[SerializeField] public GameObject _highlightPlayer;
 
     //private void OnMouseEnter()
@@ -20,14 +20,16 @@ public class Tile : MonoBehaviour
 
     private void OnMouseDown()
     {
+        //_highlightClick.SetActive(true);
         Debug.Log(name);
+
     }
 
 
     // Delete Tiles for reset
     public void DeleteSelf()
     {
-        Destroy(gameObject,2);
+        Destroy(gameObject,1);
     }
 
     private void Update()
@@ -36,13 +38,29 @@ public class Tile : MonoBehaviour
         {
             DeleteSelf();
         }
+
+        //private void OnCollisionEnter2D(Collision2D collision)
+        //{
+        //    if (collision.gameObject.CompareTag("Player"))
+        //    {
+        //        Debug.Log("d");
+        //    }
+        //}
     }
 
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Player"))
-    //    {
-    //        Debug.Log("d");
-    //    }
-    //}
+        //private void OnC(Collision2D collision)
+        //{
+        //    if (collision.gameObject.CompareTag("GridTile"))
+        //    {
+        //    Debug.Log("hit");
+        //    }
+        //}
+
+    private void OntriggerStay2D(Collision2D collision)
+    {
+        if (collision.gameObject)
+        {
+            Debug.Log("hit");
+        }
+    }
 }

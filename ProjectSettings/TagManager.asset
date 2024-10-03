@@ -9,6 +9,7 @@ TagManager:
   - Cat
   - GridTile
   - BorderTile
+  - WaterTile
   layers:
   - Default
   - TransparentFX

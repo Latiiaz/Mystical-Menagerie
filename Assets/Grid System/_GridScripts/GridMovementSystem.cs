@@ -9,7 +9,7 @@ public class GridMovementSystem : MonoBehaviour
     private Vector3 _playerPos;
     
     public float speed = 2.0f;
-    public float rotateSpeed = 18000f;
+    //public float rotateSpeed = 18000f;
 
     [SerializeField] public GameObject spawnPoint;
     [SerializeField] public GameObject orientationHitBox;
@@ -77,6 +77,21 @@ public class GridMovementSystem : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay2D(Collider2D col)
+    {
+        if (col.gameObject.CompareTag("BorderTile"))
+        {
+            Debug.Log("wall");
+        } 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("BorderTile"))
+        {
+            Debug.Log("wall");
+        }
+    }
 
 
     //Use dictionary to store all tile location and possible threats

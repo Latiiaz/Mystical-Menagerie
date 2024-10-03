@@ -97,8 +97,8 @@ GameObject:
   - component: {fileID: 4969566682909889601}
   - component: {fileID: 809855380268217972}
   m_Layer: 0
-  m_Name: BorderTile
-  m_TagString: BorderTile
+  m_Name: WaterTile
+  m_TagString: WaterTile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,7 +162,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.11331015, g: 0.26415092, b: 0.06354573, a: 1}
+  m_Color: {r: 0.40920252, g: 0.8290197, b: 0.9150943, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -195,7 +195,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
