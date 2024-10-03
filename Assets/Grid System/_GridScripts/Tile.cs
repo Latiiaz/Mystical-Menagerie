@@ -5,22 +5,37 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    [SerializeField] GameObject _highlightHover;
-    [SerializeField] public GameObject _highlightPlayer;
+    //[SerializeField] GameObject _highlightHover;
+    //[SerializeField] public GameObject _highlightPlayer;
 
-    private void OnMouseEnter()
-    {
-        _highlightHover.SetActive(true);
-    }
+    //private void OnMouseEnter()
+    //{
+    //    _highlightHover.SetActive(true);
+    //}
 
-    private void OnMouseExit()
-    {
-        _highlightHover.SetActive(false);
-    }
+    //private void OnMouseExit()
+    //{
+    //    _highlightHover.SetActive(false);
+    //}
 
     private void OnMouseDown()
     {
         Debug.Log(name);
+    }
+
+
+    // Delete Tiles for reset
+    public void DeleteSelf()
+    {
+        Destroy(gameObject,2);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            DeleteSelf();
+        }
     }
 
     //private void OnCollisionEnter2D(Collision2D collision)

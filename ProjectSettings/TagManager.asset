@@ -8,6 +8,7 @@ TagManager:
   - Foragable
   - Cat
   - GridTile
+  - BorderTile
   layers:
   - Default
   - TransparentFX
