@@ -9,7 +9,6 @@ public class GridMovementSystem : MonoBehaviour
     private Vector3 _playerPos;
     
     public float speed = 2.0f;
-    //public float rotateSpeed = 18000f;
 
     [SerializeField] public GameObject spawnPoint;
     [SerializeField] public GameObject orientationHitBox;
@@ -17,13 +16,15 @@ public class GridMovementSystem : MonoBehaviour
     private BoxCollider2D _boxCollider;
     //[SerializeField] private GridManager _gridManager;
 
+    [SerializeField] bool isMovable = false; //Will be referencing this a lot to ensure the player doesnt move weirdly (turning, spawning, impt scenes)
+
     // Start is called before the first frame update
     void Start()
     {
         PlayerSpawnPointSetter();
         _playerPos = transform.position;
-        
         _boxCollider = orientationHitBox.GetComponent<BoxCollider2D>();
+
     }
     void FixedUpdate() // Need to add: Looking and same input = walk in direction
     {
@@ -77,21 +78,21 @@ public class GridMovementSystem : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D col)
-    {
-        if (col.gameObject.CompareTag("BorderTile"))
-        {
-            Debug.Log("wall");
-        } 
-    }
+    //private void OnTriggerStay2D(Collider2D col)
+    //{
+    //    if (col.gameObject.CompareTag("BorderTile"))
+    //    {
+    //        Debug.Log("wall border stay");
+    //    } 
+    //}
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("BorderTile"))
-        {
-            Debug.Log("wall");
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("BorderTile"))
+    //    {
+    //        Debug.Log("wall border enter");
+    //    }
+    //}
 
 
     //Use dictionary to store all tile location and possible threats

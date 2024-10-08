@@ -53,3 +53,6 @@ TagManager:
   - name: Player
     uniqueID: 2054668905
     locked: 0
+  - name: MovebleObject
+    uniqueID: 1758614811
+    locked: 0
