@@ -33,7 +33,7 @@ public class MovableObject : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        transform.position = Vector3.MoveTowards(transform.position, _initPos, Time.deltaTime * 100);
+        //transform.position = Vector3.MoveTowards(transform.position, _initPos, Time.deltaTime * 100);
     }
 
 
@@ -46,6 +46,10 @@ public class MovableObject : MonoBehaviour
                 rb2d.isKinematic = false;
                 Debug.Log("Dynamic again");
             }
+        }
+        else
+        {
+            Debug.Log("failed");
         }
     }
 }

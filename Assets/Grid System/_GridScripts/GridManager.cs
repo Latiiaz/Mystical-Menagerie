@@ -25,8 +25,7 @@ public class GridManager : MonoBehaviour
 
     void Start()
     {
-        spawnSpeed = (_maxDurationForTileSpawn / ((_width + _tileBorder+_tileBorder) * (_height + _tileBorder+_tileBorder)));
-        Debug.Log(spawnSpeed);
+        
         StartCoroutine(CoolTileSpawning()); 
         CameraCentering();
     }
@@ -49,17 +48,17 @@ public class GridManager : MonoBehaviour
 
     IEnumerator CoolTileSpawning()
     {
-        
+        spawnSpeed = (_maxDurationForTileSpawn / ((_width + _tileBorder + _tileBorder) * (_height + _tileBorder + _tileBorder)));
+        Debug.Log(spawnSpeed);
 
-        for (int xb = 0 - _tileBorder; xb < _width + _tileBorder; xb++)
+        for (int yb = 0 - _tileBorder; yb < _height + _tileBorder; yb++)
         {
-            for (int yb = 0 - _tileBorder; yb < _height + _tileBorder; yb++)
+            for (int xb = 0 - _tileBorder; xb < _width + _tileBorder; xb++)
             {
                 if (xb == 0 - _tileBorder || xb == _width || yb == _height || yb == 0 - _tileBorder)
                 {
                     var spawnedTile = Instantiate(_mapBorderTilePrefab, new Vector3(xb, yb), Quaternion.identity);
                     spawnedTile.name = $"Tile Border {xb}, {yb}";
-                    Debug.Log(spawnedTile.name);
                     yield return new WaitForSeconds(spawnSpeed);
                 }
             }
