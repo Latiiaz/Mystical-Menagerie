@@ -14,7 +14,7 @@ public class GridMovementSystem : MonoBehaviour
     [SerializeField] public GameObject orientationHitBox;
 
     private BoxCollider2D _boxCollider;
-    //[SerializeField] private GridManager _gridManager;
+    [SerializeField] private GridManager _gridManager;
 
     [SerializeField] bool isMovable = false; //Will be referencing this a lot to ensure the player doesnt move weirdly (turning, spawning, impt scenes)
 
@@ -25,6 +25,7 @@ public class GridMovementSystem : MonoBehaviour
         PlayerSpawnPointSetter();
         _playerPos = transform.position;
         _boxCollider = orientationHitBox.GetComponent<BoxCollider2D>();
+
 
     }
     void FixedUpdate() // Need to add: Looking and same input = walk in direction
@@ -75,9 +76,14 @@ public class GridMovementSystem : MonoBehaviour
         
     }
 
+    void ClampPlayer() // clamp to border
+    {
+
+    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("GridTile"))
+        if (collision.gameObject.CompareTag("BorderTile"))
         {
             Debug.Log("Wall");
         }
@@ -88,7 +94,7 @@ public class GridMovementSystem : MonoBehaviour
     //    if (col.gameObject.CompareTag("BorderTile"))
     //    {
     //        Debug.Log("wall border stay");
-    //    } 
+    //    }
     //}
 
     //private void OnTriggerEnter2D(Collider2D collision)
@@ -99,16 +105,4 @@ public class GridMovementSystem : MonoBehaviour
     //    }
     //}
 
-
-    //Use dictionary to store all tile location and possible threats
-    //Update when tile has interactions
-    //Log all moves in console log 
-
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("GridTile"))
-    //    {
-    //        Debug.Log("d");
-    //    }
-    //}
 }

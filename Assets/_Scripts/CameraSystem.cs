@@ -10,7 +10,7 @@ public class CameraSystem : MonoBehaviour
     protected float targetXPos = 0f;
     protected float targetYPos = 0f;
 
-    private GameObject player;
+    [SerializeField] private GameObject _player;
 
     private float xMin = -299f, xMax = 299f;
     private float yMin = -299f, yMax = 299f;
@@ -18,22 +18,20 @@ public class CameraSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+
+        _player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (player == null)
+        if (_player == null)
         {
             return;
         }
 
-        float yPos = player.transform.position.y;
-        float xPos = player.transform.position.x;
-        targetXPos = Mathf.Lerp(targetXPos, player.transform.position.x, Time.deltaTime * LerpSpeed);
-        targetYPos = Mathf.Lerp(targetYPos, player.transform.position.y, Time.deltaTime * 3 * LerpSpeed);
-
+        targetXPos = _player.transform.position.y;
+        targetYPos = _player.transform.position.x;
         float clampxpos = Mathf.Clamp(targetXPos, xMin, xMax);
         float clampypos = Mathf.Clamp(targetYPos, yMin, yMax);
 

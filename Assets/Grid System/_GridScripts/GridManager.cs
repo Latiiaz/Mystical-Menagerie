@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 
 public class GridManager : MonoBehaviour
 {
+    [Header("Tile Spawning")]
     // How many Tiles will spawn
     [SerializeField] private int _width;
     [SerializeField] private int _height;
@@ -15,20 +16,28 @@ public class GridManager : MonoBehaviour
     [SerializeField] private GameObject _mapBorderTilePrefab;
 
     [SerializeField] private float _maxDurationForTileSpawn;
+    private float spawnSpeed;
 
     [SerializeField] private Transform _borderTileParent; 
     [SerializeField] private Transform _playableTileParent;
 
-    // Camera Centering
+
+    [Header("Camera Controls")]
+    // Camera Centering should probably move to camera itself instead of running it here
     [SerializeField] private Transform _cam;
 
-    private float spawnSpeed;
+
+    [Header("Player Spawning")]
+    [SerializeField] private GameObject _player;
+    [SerializeField] private float _playerSpawnInverval;
+
+
     // Dictionary For Tiles
     //private Dictionary<string, Tile> tileDict= new Dictionary<string, Tile>();
 
     void Start()
     {
-        
+        _player.SetActive(false);
         StartCoroutine(CoolTileSpawning()); 
         CameraCentering();
     }
@@ -39,20 +48,10 @@ public class GridManager : MonoBehaviour
         _cam.transform.position = new Vector3((_width / 2), _height / 2, -10);
     }
 
-    void TileUpdater()
-    {
 
-    }
-
-    void TileSpawnSpeedCalculator()
-    {
-        
-    }
-
-    IEnumerator CoolTileSpawning()
+    IEnumerator CoolTileSpawning() // Could split player spawning into a different Ienum
     {
         spawnSpeed = (_maxDurationForTileSpawn / ((_width + _tileBorder + _tileBorder) * (_height + _tileBorder + _tileBorder)));
-
         //Debug.Log(spawnSpeed);
 
         for (int yb = 0 - _tileBorder; yb < _height + _tileBorder; yb++) //Spawns Borders
@@ -79,6 +78,7 @@ public class GridManager : MonoBehaviour
                 yield return new WaitForSeconds(spawnSpeed);
             }
         }
-
+        yield return new WaitForSeconds(_playerSpawnInverval);
+       _player.SetActive(true);
     }
 }

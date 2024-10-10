@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovableObject : MonoBehaviour
+public class InteractableObject : MonoBehaviour
 {
+    //Check if object is supposed to move or just stationary
+
     public Rigidbody2D rb2d;
 
     private Vector3 _initPos;
@@ -13,7 +15,7 @@ public class MovableObject : MonoBehaviour
     [SerializeField] private GameObject _eastBox;
     [SerializeField] private GameObject _westBox;
 
-
+    [SerializeField] protected bool staticObject = false;
 
     void Start()
     {

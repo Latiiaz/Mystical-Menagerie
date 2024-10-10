@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rock : MovableObject
+public class Rock : InteractableObject 
 {
     public Rigidbody2D dd;
     // Start is called before the first frame update

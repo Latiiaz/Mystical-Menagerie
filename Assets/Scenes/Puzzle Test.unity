@@ -160,6 +160,8 @@ MonoBehaviour:
   _borderTileParent: {fileID: 1742085446}
   _playableTileParent: {fileID: 1125374046}
   _cam: {fileID: 1209079296}
+  _player: {fileID: 1448251737}
+  _playerSpawnInverval: 1
 --- !u!4 &108721216
 Transform:
   m_ObjectHideFlags: 0
@@ -213,6 +215,7 @@ MonoBehaviour:
   _southBox: {fileID: 853995769}
   _eastBox: {fileID: 1441076013}
   _westBox: {fileID: 1131116693}
+  staticObject: 0
   dd: {fileID: 192831700}
 --- !u!50 &192831700
 Rigidbody2D:
@@ -330,7 +333,7 @@ Transform:
   - {fileID: 1441076015}
   - {fileID: 1131116695}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &197693187
 GameObject:
@@ -679,7 +682,7 @@ Transform:
   - {fileID: 1742085446}
   - {fileID: 1125374046}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &762481178
 GameObject:
@@ -805,7 +808,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &853995769
 GameObject:
@@ -902,6 +905,7 @@ MonoBehaviour:
   _southBox: {fileID: 986028990}
   _eastBox: {fileID: 502965484}
   _westBox: {fileID: 959514296}
+  staticObject: 0
   dd: {fileID: 943130406}
 --- !u!50 &943130406
 Rigidbody2D:
@@ -1019,7 +1023,7 @@ Transform:
   - {fileID: 502965486}
   - {fileID: 959514298}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &959514296
 GameObject:
@@ -1378,7 +1382,7 @@ RectTransform:
   m_Children:
   - {fileID: 2110120046}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1488,7 +1492,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!50 &1209776096
 Rigidbody2D:
   serializedVersion: 4
@@ -1605,7 +1609,7 @@ Transform:
   - {fileID: 663873112}
   - {fileID: 762481180}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1209776100
 MonoBehaviour:
@@ -1624,6 +1628,7 @@ MonoBehaviour:
   _southBox: {fileID: 239258444}
   _eastBox: {fileID: 663873110}
   _westBox: {fileID: 762481178}
+  staticObject: 0
   dd: {fileID: 1209776096}
 --- !u!1 &1248231047
 GameObject:
@@ -1929,7 +1934,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1448251738
 Transform:
   m_ObjectHideFlags: 0
@@ -1962,6 +1967,7 @@ MonoBehaviour:
   speed: 3
   spawnPoint: {fileID: 1529551878}
   orientationHitBox: {fileID: 312024091}
+  _gridManager: {fileID: 108721215}
   isMovable: 0
 --- !u!61 &1448251740
 BoxCollider2D:
