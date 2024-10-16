@@ -1,8 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Tilemaps;
+using UnityEngine.Timeline;
 
 public class GridManager : MonoBehaviour
 {
@@ -37,6 +40,7 @@ public class GridManager : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(".");
         _player.SetActive(false);
         StartCoroutine(CoolTileSpawning()); 
         CameraCentering();
@@ -51,8 +55,9 @@ public class GridManager : MonoBehaviour
 
     IEnumerator CoolTileSpawning() // Could split player spawning into a different Ienum
     {
+        float startTime = Time.time;
         spawnSpeed = (_maxDurationForTileSpawn / ((_width + _tileBorder + _tileBorder) * (_height + _tileBorder + _tileBorder)));
-        //Debug.Log(spawnSpeed);
+        Debug.Log(spawnSpeed);
 
         for (int yb = 0 - _tileBorder; yb < _height + _tileBorder; yb++) //Spawns Borders
         {
@@ -78,6 +83,8 @@ public class GridManager : MonoBehaviour
                 yield return new WaitForSeconds(spawnSpeed);
             }
         }
+        Debug.Log(Time.time - startTime);
+        
         yield return new WaitForSeconds(_playerSpawnInverval);
        _player.SetActive(true);
     }

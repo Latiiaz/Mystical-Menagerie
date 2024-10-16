@@ -152,11 +152,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c01cc586ab0f24e4e89f906413222515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _width: 5
-  _height: 5
+  _width: 13
+  _height: 13
   _tilePrefab: {fileID: 5761580093778882973, guid: 4392dcd91e3a2274ea2296022ca6ff44, type: 3}
   _mapBorderTilePrefab: {fileID: 5761580093778882973, guid: 24df73a1ce9fccc40b57106843e744fe, type: 3}
-  _maxDurationForTileSpawn: 2
+  _maxDurationForTileSpawn: 1
   _borderTileParent: {fileID: 1742085446}
   _playableTileParent: {fileID: 1125374046}
   _cam: {fileID: 1209079296}
@@ -764,7 +764,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.3854461, g: 0.29000536, b: 0.46226418, a: 0}
+  m_BackGroundColor: {r: 0.11320752, g: 0.11320752, b: 0.11320752, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1207,6 +1207,10 @@ MonoBehaviour:
   orientationHitBox: {fileID: 312024091}
   _gridManager: {fileID: 108721215}
   isMovable: 0
+  lookRight: 0
+  lookLeft: 0
+  lookUp: 0
+  lookDown: 1
 --- !u!61 &1448251740
 BoxCollider2D:
   m_ObjectHideFlags: 0

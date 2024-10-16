@@ -18,6 +18,10 @@ public class GridMovementSystem : MonoBehaviour
 
     [SerializeField] bool isMovable = false; //Will be referencing this a lot to ensure the player doesnt move weirdly (turning, spawning, impt scenes)
 
+    [SerializeField] bool lookRight = false;
+    [SerializeField] bool lookLeft = false;
+    [SerializeField] bool lookUp = false;
+    [SerializeField] bool lookDown = false;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +35,7 @@ public class GridMovementSystem : MonoBehaviour
     void FixedUpdate() // Need to add: Looking and same input = walk in direction
     {
         PlayerLookingDirection();
+        
     }
 
     void PlayerSpawnPointSetter()
@@ -44,7 +49,10 @@ public class GridMovementSystem : MonoBehaviour
         if (Input.GetKey(KeyCode.W) && transform.position == _playerPos)
         {
             PlayerRotate(180f);
-
+            if (lookUp == true)
+            {
+                Debug.Log("Dwa");
+            }
             _playerPos += Vector3.up;
             //Facing Down
         }
@@ -72,10 +80,34 @@ public class GridMovementSystem : MonoBehaviour
     }
     void PlayerRotate(float direction)
     {
+        PlayerDirectionReset();
         transform.rotation = Quaternion.Euler(0f,0f,direction);
-        
-    }
 
+        if (direction == 0f)
+        {
+            lookDown = true;
+        }
+        if (direction == 90f)
+        {
+            lookRight = true;
+        }
+        if (direction == 180f)
+        {
+            lookUp = true;
+        }
+        if (direction == 270f)
+        {
+            lookLeft = true;
+        }
+
+    }
+    void PlayerDirectionReset()
+    {
+        lookUp = false;
+        lookDown = false;
+        lookLeft = false;
+        lookRight = false;     
+    }
     void ClampPlayer() // clamp to border
     {
 
