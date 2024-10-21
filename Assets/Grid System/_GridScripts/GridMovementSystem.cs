@@ -51,7 +51,7 @@ public class GridMovementSystem : MonoBehaviour
             PlayerRotate(180f);
             if (lookUp == true)
             {
-                Debug.Log("Dwa");
+                Debug.Log("Up");
             }
             _playerPos += Vector3.up;
             //Facing Down
@@ -59,6 +59,10 @@ public class GridMovementSystem : MonoBehaviour
         if (Input.GetKey(KeyCode.S) && transform.position == _playerPos)
         {
             PlayerRotate(0f);
+            if (lookDown == true)
+            {
+                Debug.Log("Down");
+            }
 
             _playerPos += Vector3.down;
             //Facing Down
@@ -66,12 +70,21 @@ public class GridMovementSystem : MonoBehaviour
         if (Input.GetKey(KeyCode.A) && transform.position == _playerPos)
         {
             PlayerRotate(270f);
+            if (lookLeft == true)
+            {
+                Debug.Log("Left");
+            }
+
             _playerPos += Vector3.left;
             //Facing Left
         }
         if (Input.GetKey(KeyCode.D) && transform.position == _playerPos)
         {
             PlayerRotate(90f);
+            if (lookRight == true)
+            {
+                Debug.Log("Right");
+            }
             _playerPos += Vector3.right;
             //Facing Right
         }

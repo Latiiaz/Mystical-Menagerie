@@ -53,7 +53,7 @@ public class GridManager : MonoBehaviour
     }
 
 
-    IEnumerator CoolTileSpawning() // Could split player spawning into a different Ienum
+    IEnumerator CoolTileSpawning() // Could split player spawning into a different Ienum // Maybe spawn from the inside out or peel by peel
     {
         float startTime = Time.time;
         spawnSpeed = (_maxDurationForTileSpawn / ((_width + _tileBorder + _tileBorder) * (_height + _tileBorder + _tileBorder)));
@@ -68,7 +68,7 @@ public class GridManager : MonoBehaviour
                     var spawnedTile = Instantiate(_mapBorderTilePrefab, new Vector3(xb, yb), Quaternion.identity);
                     spawnedTile.name = $"Tile Border {xb}, {yb}";
                     spawnedTile.transform.SetParent(_borderTileParent);
-                    yield return new WaitForSeconds(spawnSpeed);
+                    yield return new WaitForSeconds(0); // change to spawnSpeed
                 }
             }
         }
@@ -80,7 +80,7 @@ public class GridManager : MonoBehaviour
                 var spawnedTile = Instantiate(_tilePrefab, new Vector3(x, y), Quaternion.identity);
                 spawnedTile.name = $"Tile {x}, {y}";
                 spawnedTile.transform.SetParent(_playableTileParent);
-                yield return new WaitForSeconds(spawnSpeed);
+                yield return new WaitForSeconds(0); // Change to spawnSpeed
             }
         }
         Debug.Log(Time.time - startTime);
