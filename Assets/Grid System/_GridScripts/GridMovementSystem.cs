@@ -48,11 +48,19 @@ public class GridMovementSystem : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W) && transform.position == _playerPos)
         {
-            PlayerRotate(180f);
-            if (lookUp == true)
+            if (transform.position == _playerPos)
+            {
+
+            }
+            if (lookUp)
             {
                 Debug.Log("Up");
             }
+            else
+            {
+                PlayerRotate(180f);
+            }
+
             _playerPos += Vector3.up;
             //Facing Down
         }

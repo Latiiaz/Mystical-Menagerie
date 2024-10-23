@@ -68,7 +68,7 @@ public class GridManager : MonoBehaviour
                     var spawnedTile = Instantiate(_mapBorderTilePrefab, new Vector3(xb, yb), Quaternion.identity);
                     spawnedTile.name = $"Tile Border {xb}, {yb}";
                     spawnedTile.transform.SetParent(_borderTileParent);
-                    yield return new WaitForSeconds(0); // change to spawnSpeed
+                   /* yield return new WaitForSeconds(0);*/ // change to spawnSpeed
                 }
             }
         }
@@ -80,7 +80,7 @@ public class GridManager : MonoBehaviour
                 var spawnedTile = Instantiate(_tilePrefab, new Vector3(x, y), Quaternion.identity);
                 spawnedTile.name = $"Tile {x}, {y}";
                 spawnedTile.transform.SetParent(_playableTileParent);
-                yield return new WaitForSeconds(0); // Change to spawnSpeed
+                /*yield return new WaitForSeconds(0);*/ // Change to spawnSpeed
             }
         }
         Debug.Log(Time.time - startTime);
