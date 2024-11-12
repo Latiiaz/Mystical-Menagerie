@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using static UnityEditor.PlayerSettings;
 
 public class GridMovementSystem : MonoBehaviour
 {
-
     private Vector3 _playerPos;
-    
     public float speed = 2.0f;
 
     [SerializeField] public GameObject spawnPoint;
@@ -16,26 +15,31 @@ public class GridMovementSystem : MonoBehaviour
     private BoxCollider2D _boxCollider;
     [SerializeField] private GridManager _gridManager;
 
-    [SerializeField] bool isMovable = false; //Will be referencing this a lot to ensure the player doesnt move weirdly (turning, spawning, impt scenes)
-
+    [SerializeField] bool isMovable = false; // Prevents unexpected movement behavior
     [SerializeField] bool lookRight = false;
     [SerializeField] bool lookLeft = false;
     [SerializeField] bool lookUp = false;
     [SerializeField] bool lookDown = false;
 
-    // Start is called before the first frame update
+    private ActionsKeeper _actionsKeeper;
+    [SerializeField] private int _steps = 1;
+    [SerializeField] private float _actionInterval;
+
+    void Awake()
+    {
+        _actionsKeeper = FindObjectOfType<ActionsKeeper>();
+    }
+
     void Start()
     {
         PlayerSpawnPointSetter();
         _playerPos = transform.position;
         _boxCollider = orientationHitBox.GetComponent<BoxCollider2D>();
-
-
     }
-    void FixedUpdate() // Need to add: Looking and same input = walk in direction
+
+    void FixedUpdate()
     {
-        PlayerLookingDirection();
-        
+        StartCoroutine(PlayerLookingDirectionWithCooldown());
     }
 
     void PlayerSpawnPointSetter()
@@ -44,118 +48,89 @@ public class GridMovementSystem : MonoBehaviour
         transform.position = spawnPosition;
     }
 
-    void PlayerLookingDirection()
+    IEnumerator PlayerLookingDirectionWithCooldown()
     {
         if (Input.GetKey(KeyCode.W) && transform.position == _playerPos)
         {
-            if (transform.position == _playerPos)
-            {
-
-            }
             if (lookUp)
             {
                 Debug.Log("Up");
+                _playerPos += Vector3.up;
+                _actionsKeeper.ModifyScore(_steps);
             }
             else
             {
                 PlayerRotate(180f);
             }
-
-            _playerPos += Vector3.up;
-            //Facing Down
+            yield return CooldownPerAction();
         }
+
         if (Input.GetKey(KeyCode.S) && transform.position == _playerPos)
         {
-            PlayerRotate(0f);
-            if (lookDown == true)
+            if (lookDown)
             {
                 Debug.Log("Down");
+                _playerPos += Vector3.down;
+                _actionsKeeper.ModifyScore(_steps);
             }
-
-            _playerPos += Vector3.down;
-            //Facing Down
+            else
+            {
+                PlayerRotate(0f);
+            }
+            yield return CooldownPerAction();
         }
+
         if (Input.GetKey(KeyCode.A) && transform.position == _playerPos)
         {
-            PlayerRotate(270f);
-            if (lookLeft == true)
+            if (lookLeft)
             {
                 Debug.Log("Left");
+                _playerPos += Vector3.left;
+                _actionsKeeper.ModifyScore(_steps);
             }
-
-            _playerPos += Vector3.left;
-            //Facing Left
+            else
+            {
+                PlayerRotate(270f);
+            }
+            yield return CooldownPerAction();
         }
+
         if (Input.GetKey(KeyCode.D) && transform.position == _playerPos)
         {
-            PlayerRotate(90f);
-            if (lookRight == true)
+            if (lookRight)
             {
                 Debug.Log("Right");
+                _playerPos += Vector3.right;
+                _actionsKeeper.ModifyScore(_steps);
             }
-            _playerPos += Vector3.right;
-            //Facing Right
+            else
+            {
+                PlayerRotate(90f);
+            }
+            yield return CooldownPerAction();
         }
 
-        transform.position = Vector3.MoveTowards(transform.position, _playerPos, Time.deltaTime * speed); 
+        transform.position = Vector3.MoveTowards(transform.position, _playerPos, Time.deltaTime * speed);
     }
+
     void PlayerRotate(float direction)
     {
         PlayerDirectionReset();
-        transform.rotation = Quaternion.Euler(0f,0f,direction);
+        transform.rotation = Quaternion.Euler(0f, 0f, direction);
 
-        if (direction == 0f)
-        {
-            lookDown = true;
-        }
-        if (direction == 90f)
-        {
-            lookRight = true;
-        }
-        if (direction == 180f)
-        {
-            lookUp = true;
-        }
-        if (direction == 270f)
-        {
-            lookLeft = true;
-        }
-
+        if (direction == 0f) lookDown = true;
+        if (direction == 90f) lookRight = true;
+        if (direction == 180f) lookUp = true;
+        if (direction == 270f) lookLeft = true;
     }
+
     void PlayerDirectionReset()
     {
-        lookUp = false;
-        lookDown = false;
-        lookLeft = false;
-        lookRight = false;     
+        lookUp = lookDown = lookLeft = lookRight = false;
     }
-    void ClampPlayer() // clamp to border
+
+    IEnumerator CooldownPerAction()
     {
-
+        yield return new WaitForSeconds(_actionInterval);
     }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("BorderTile"))
-        {
-            Debug.Log("Wall");
-        }
-    }
-
-    //private void OnTriggerStay2D(Collider2D col)
-    //{
-    //    if (col.gameObject.CompareTag("BorderTile"))
-    //    {
-    //        Debug.Log("wall border stay");
-    //    }
-    //}
-
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("BorderTile"))
-    //    {
-    //        Debug.Log("wall border enter");
-    //    }
-    //}
-
 }
